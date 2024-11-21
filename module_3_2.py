@@ -1,31 +1,33 @@
-# Создайте функцию send_email, которая принимает 2 обычных аргумента: сообщение и получатель и 1 обязательно именованный аргумент со значением по умолчанию - отправитель.
-# Внутри функции реализовать следующую логику:
-# Проверка на корректность e-mail отправителя и получателя.
-# Проверка на отправку самому себе.
-# Проверка на отправителя по умолчанию.
-# Пункты задачи:
-#
-# Создайте функцию send_email, которая принимает 2 обычных аргумента: message(сообщение),
-# recipient(получатель) и 1 обязательно именованный аргумент со значением по умолчанию
-# sender = "university.help@gmail.com".
-# Если строки recipient и sender не содержит "@" или не оканчивается на ".com"/".ru"/".net",
-# то вывести на экран(в консоль) строку: "Невозможно отправить письмо с адреса <sender>
-# на адрес <recipient>".
-# Если же sender и recipient совпадают, то вывести "Нельзя отправить письмо самому себе!"
-# Если же отправитель по умолчанию - university.help@gmail.com, то вывести сообщение:
-# "Письмо успешно отправлено с адреса <sender> на адрес <recipient>."
-# В противном случае вывести сообщение: "НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с
-# адреса <sender> на адрес <recipient>."
-# Здесь <sender> и <recipient> - значения хранящиеся в этих переменных.
-# За один вызов функции выводится только одно и перечисленных уведомлений! Проверки
-# перечислены по мере выполнения.
-#
-# Пример выполняемого кода (тесты):
-#
-# send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
-# send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com')
-# send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
-# send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru')
+def equality (recipient, sender):
+    d = ()
+    if recipient == sender:
+        d = print(f'Нельзя отправить письмо самому себе!')
+    else:
+        if sender == 'university.help@gmail.com':
+            d = print(f'Письмо успешно отправлено с адреса {sender} на адрес {recipient}.')
+        else:
+            d = print(f'НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {recipient}.')
+    return d
 
-def send_email(message, recipient, *sender = "university.help@gmail.com"):
-if
+def send_email(message, recipient, *, sender = 'university.help@gmail.com'):
+    a = "@"
+    mail = [recipient, sender]
+    for j in range(0, 2):
+        if a in mail[j]:
+            b = [".com", ".ru", ".net"]
+            for i in range(0, len(b)):
+                if b[i] in mail[j]:
+                    break
+                else:
+                    if i == 2:
+                        return print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient}')
+    equality (recipient, sender)
+
+
+send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
+send_email('Вы видите это сообщение как лучший студент курса!',
+           'urban.fan@mail.ru', sender='urban.info@gmail.com')
+send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru',
+           sender='urban.teacher@mail.uk')
+send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru',
+           sender='urban.teacher@mail.ru')
